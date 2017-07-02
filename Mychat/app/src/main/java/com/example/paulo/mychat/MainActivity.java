@@ -62,4 +62,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+    public void onResume() {
+        super.onResume();
+        DBHelper db = new DBHelper(this);
+        List<ItemsContactos> contactos = new ArrayList<>();
+        Cursor c  = db.getTodosContactos();
+        //db.insertarContacto("Stefanie","Muroya","prueba@gmail.com");
+        while (c.moveToNext()){
+            String nombre = c.getString(c.getColumnIndex("nombre"));
+            String apellido = c.getString(c.getColumnIndex("apellido"));
+            String fullname = nombre +" "+apellido;
+            contactos.add(new ItemsContactos(Integer.parseInt(c.getString(c.getColumnIndex("id"))),fullname));
+        }
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.listaCcntactos);
+        RecyclerViewContactos adapter = new RecyclerViewContactos(contactos,getApplication());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
 }

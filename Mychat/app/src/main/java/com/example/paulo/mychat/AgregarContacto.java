@@ -22,7 +22,6 @@ public class AgregarContacto extends AppCompatActivity {
         apellido = (EditText) findViewById(R.id.input_apellido);
         correo = (EditText) findViewById(R.id.input_correo);
         editar = (Button) findViewById(R.id.btn_Editar);
-        regresar = (Button)findViewById(R.id.)
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,4 +30,5 @@ public class AgregarContacto extends AppCompatActivity {
             }
         });
     }
+
 }
